@@ -39,3 +39,8 @@
     transform: rotate(360deg);
   }
 }
+/* Make sure no CSS is overriding our style */
+body {
+  transition: background-color 0.3s, color 0.3s;
+}
+
