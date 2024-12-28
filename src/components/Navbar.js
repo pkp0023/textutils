@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 export default function Navbar(props) {
   return (
@@ -7,9 +8,10 @@ export default function Navbar(props) {
       className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}
     >
       <div className="container-fluid">
-        <a className="navbar-brand" href="/">
+        {/* Home Link */}
+        <Link className="navbar-brand" to="/">
           {props.title}
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -23,10 +25,20 @@ export default function Navbar(props) {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            {/* Add other navigation links here if needed */}
+            {/* Home and About Links */}
+            <li className="nav-item">
+              <Link className="nav-link" aria-current="page" to="/">
+                Home
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/about">
+                About
+              </Link>
+            </li>
           </ul>
+          {/* Background Color Buttons */}
           <div className="d-flex">
-            {/* Background Color Buttons */}
             <button
               className="btn btn-primary mx-1"
               onClick={() => props.handleColorChange("blue")}
@@ -51,18 +63,10 @@ export default function Navbar(props) {
             >
               Yellow Background
             </button>
-            <button
-              className="btn btn-light mx-1"
-              onClick={() => props.handleColorChange("white")}
-            >
-              White Background
-            </button>
-            <button
-              className="btn btn-dark mx-1"
-              onClick={() => props.handleColorChange("black")}
-            >
-              Black Background
-            </button>
+            
+            <div className="d-flex">
+              <div className="bg-primary rounded mx-2" style={{height :'30px',width : '30px' }}></div>
+            </div>
           </div>
           {/* Dark Mode Toggle */}
           <div className="form-check form-switch mx-2">

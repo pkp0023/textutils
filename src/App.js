@@ -2,6 +2,13 @@ import React, { useState } from "react";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
 import Alert from "./components/Alert";
+import About from "./components/About"
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
+
 
 function App() {
   const [mode, setMode] = useState("light");
@@ -49,6 +56,7 @@ function App() {
 
   return (
     <>
+    <Router>
       <Navbar
         title="Textutils2"
         mode={mode}
@@ -57,13 +65,29 @@ function App() {
       />
       <Alert alert={alert} />
       <div className="container my-3">
-        <TextForm
-          showAlert={showAlert}
-          heading="Enter the text to analyze below"
-          mode={mode}
-          backgroundColor={backgroundColor} // Pass backgroundColor to TextForm
-        />
+      <Routes>
+    {/* /users --> Component 1
+        /users/home --> Component 2 */}
+          <Route  path="/about" element={<About mode={mode}/>}/>
+         
+          
+          <Route
+              path="/"
+              element={
+                <TextForm
+                  showAlert={showAlert}
+                  heading="Try TextUtils - word counter, character counter, remove extra spaces"
+                  mode={mode}
+                  backgroundColor={backgroundColor} // Pass backgroundColor to TextForm
+                />
+              }
+            />
+        
+       
+        </Routes>
+        
       </div>
+      </Router>
     </>
   );
 }

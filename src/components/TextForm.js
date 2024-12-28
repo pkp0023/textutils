@@ -24,8 +24,10 @@ export default function TextForm(props) {
 
   // Determine the text color based on background color
   let textColor = "black"; // Default text color
-  if (props.mode === "dark" || props.backgroundColor === "black") {
+  if (props.mode === "dark" || props.backgroundColor === "black" ) {
     textColor = "white"; // Change to white for dark mode or black background
+  }else{
+    
   }
 
   return (
@@ -37,11 +39,10 @@ export default function TextForm(props) {
           value={text}
           onChange={handleChange}
           style={{
-            backgroundColor: props.mode === "dark" ? "#212529" : "white",
-            color: textColor,
+            backgroundColor: props.mode === "dark" ? "grey" : "#042743",
+            color: props.mode === 'dark' ? 'white' : 'grey',
           }}
-          rows="8"
-        ></textarea>
+          id = "mybox" rows="8"></textarea>
       </div>
       <button className="btn btn-primary mx-1" onClick={handleUpperCase}>
         Convert to Upper Case
